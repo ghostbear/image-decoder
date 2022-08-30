@@ -85,10 +85,11 @@ ImageInfo PngDecoder::parseInfo() {
       if (bitDepth == 16) {
         png_set_scale_16(png);
       }
+
       if (colorType & (uint8_t) PNG_COLOR_MASK_COLOR) {
         png_set_rgb_to_gray(png, 1, -1, -1);
         png_set_strip_alpha(png);
-      } else if (colorType & (uint8_t) PNG_COLOR_MASK_ALPHA) {
+      } else {
         png_set_strip_alpha(png);
       }
 
